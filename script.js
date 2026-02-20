@@ -99,6 +99,7 @@ function btnPress() {
 let allBtns = document.querySelectorAll(".btn");
 for (btn of allBtns) {
     btn.addEventListener("click", btnPress);
+    btn.addEventListener("touchstart", btnPress);   // mobile
 }
 
 // Reset the game varibale to start the game again when user presses any key after game over
