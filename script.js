@@ -28,8 +28,8 @@ function startGame() {
     }
 }
 
-document.addEventListener("keypress", startGame);
-document.addEventListener("touchstart", startGame);
+document.addEventListener("keydown", startGame);
+document.addEventListener("touchstart", startGame, { once: true });
 
 // Display highest score on page load
 displayHighestScore();
@@ -88,7 +88,8 @@ function checkAns(idx) {
 }
 
 // Event listerner for user Button Press
-function btnPress() {
+function btnPress(e) {
+    e.preventDefault(); // stops double firing on mobile
     let btn = this;
     userFlash(btn);
     let userColor = btn.getAttribute("id");
@@ -100,7 +101,7 @@ function btnPress() {
 let allBtns = document.querySelectorAll(".btn");
 for (let btn of allBtns) {
     btn.addEventListener("click", btnPress);
-    btn.addEventListener("touchstart", btnPress);
+    btn.addEventListener("touchstart", btnPress, { passive:false });
 }
 
 // Reset the game varibale to start the game again when user presses any key after game over
