@@ -21,14 +21,15 @@ function displayHighestScore() {
 }
 
 // start the game when user presses any key for the first time
-document.addEventListener("keypress", function () {
+function startGame() {
     if (!started) {
-        console.log("Game Started");
         started = true;
-
         levelup();
     }
-});
+}
+
+document.addEventListener("keypress", startGame);
+document.addEventListener("touchstart", startGame);
 
 // Display highest score on page load
 displayHighestScore();
@@ -55,7 +56,7 @@ function levelup() {
     level++;
     h2.innerText = "Level " + level;
     
-    let randIdx = Math.floor(Math.random() * 3);
+    let randIdx = Math.floor(Math.random() * btns.length)
     let randColor = btns[randIdx];
     let randBtn = document.querySelector(`.${randColor}`);
     gameseq.push(randColor);
@@ -97,9 +98,9 @@ function btnPress() {
 
 // Adding event listener to all the buttons
 let allBtns = document.querySelectorAll(".btn");
-for (btn of allBtns) {
+for (let btn of allBtns) {
     btn.addEventListener("click", btnPress);
-    btn.addEventListener("touchstart", btnPress);   // mobile
+    btn.addEventListener("touchstart", btnPress);
 }
 
 // Reset the game varibale to start the game again when user presses any key after game over
