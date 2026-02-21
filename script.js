@@ -28,8 +28,9 @@ function startGame() {
     }
 }
 
-document.addEventListener("keydown", startGame);
-document.addEventListener("touchstart", startGame, { once: true });
+let startbtn = document.querySelector("#startBtn");
+startbtn.addEventListener("click", startGame);
+
 
 // Display highest score on page load
 displayHighestScore();
@@ -78,7 +79,7 @@ function checkAns(idx) {
             displayHighestScore();
         }
         
-        h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Highest Score: <b>${highestScore}</b><br>Press Any Key to Restart`;
+        h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Highest Score: <b>${highestScore}</b><br>Press Start Button to Restart`;
         document.querySelector("body").style.backgroundColor = "red";
         setTimeout(function () {
             document.querySelector("body").style.backgroundColor = "white";
@@ -89,7 +90,6 @@ function checkAns(idx) {
 
 // Event listerner for user Button Press
 function btnPress(e) {
-    e.preventDefault(); // stops double firing on mobile
     let btn = this;
     userFlash(btn);
     let userColor = btn.getAttribute("id");
@@ -100,8 +100,7 @@ function btnPress(e) {
 // Adding event listener to all the buttons
 let allBtns = document.querySelectorAll(".btn");
 for (let btn of allBtns) {
-    btn.addEventListener("click", btnPress);
-    btn.addEventListener("touchstart", btnPress, { passive:false });
+    btn.addEventListener("pointerdown", btnPress);
 }
 
 // Reset the game varibale to start the game again when user presses any key after game over

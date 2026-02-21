@@ -69,6 +69,7 @@ h2{
     box-shadow:0 12px 30px rgba(0,0,0,0.6);
     touch-action: manipulation;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Hover */
@@ -80,6 +81,26 @@ h2{
 /* Click */
 .btn:active{
     transform:scale(0.92);
+}
+
+#startBtn {
+    padding: 12px 28px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(45deg, #28a745, #5cd65c);
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.2s;
+}
+
+#startBtn:hover {
+    transform: scale(1.05);
+}
+
+#startBtn:active {
+    transform: scale(0.95);
 }
 
 /* ===== Button Colors ===== */
